@@ -7,7 +7,7 @@ mod gui;
 fn main() {
     Images::run(Settings {
         window: iced::window::Settings {
-            size: (800, 660),
+            size: (780, 660),
             ..Default::default()
         },
         default_text_size: 18.0,
