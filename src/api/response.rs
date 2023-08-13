@@ -1,4 +1,4 @@
-use std::{path::PathBuf, io::Write};
+use std::{io::Write, path::PathBuf};
 
 use reqwest::{blocking, Error};
 use serde::Deserialize;
@@ -49,9 +49,13 @@ impl Images {
         Ok(blocking::get(url)?.bytes()?)
     }
 
-    pub fn save_image(&self, path: PathBuf, buf: bytes::Bytes) -> Result<(), Box<dyn std::error::Error>> {
+    pub fn save_image(
+        &self,
+        path: PathBuf,
+        buf: bytes::Bytes,
+    ) -> Result<(), Box<dyn std::error::Error>> {
         let mut file = std::fs::File::create(path).unwrap();
-        
+
         file.write_all(&buf)?;
 
         Ok(())
@@ -73,7 +77,7 @@ impl Images {
                 d.push(date);
                 d.set_extension("jpg");
 
-                return d
+                return d;
             }
             None => {
                 panic!("Cannot save image")
