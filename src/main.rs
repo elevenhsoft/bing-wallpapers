@@ -7,10 +7,13 @@ mod gui;
 fn main() {
     Images::run(Settings {
         window: iced::window::Settings {
-            size: (780, 660),
+            size: iced::Size {
+                width: 780.,
+                height: 660.,
+            },
             ..Default::default()
         },
-        default_text_size: 18.0,
+        default_text_size: iced::Pixels(18.0),
         antialiasing: true,
         ..Default::default()
     })
